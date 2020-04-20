@@ -11,7 +11,12 @@
     <li>Buy Food</li>
     <li>Cook Food</li>
     <li>Eat Food</li>
-    <li><%= newItem %></li>
+
+    <% for (let i = 0; i < newItems.length ; i++) { %>
+        <li><%= newItems[i] %></li>
+    <% } %>
+
+
 </ul>
 <form action="/" method="post">
     <label id="newListItem">Please add a new list item</label>

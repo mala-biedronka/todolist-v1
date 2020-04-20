@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
+let usersInput = [];
 const app = express();
 
 app.set("view engine", "ejs");
@@ -18,14 +18,16 @@ app.get("/", function (req, res) {
 
     let currentDate = today.toLocaleDateString("en-US", options);
 
-    res.render("list", {kindOfDay: currentDate, newItem: usersInput});
+    res.render("list", {kindOfDay: currentDate, newItems: usersInput});
 });
 
 app.post ("/", function (req, res) {
-    let usersInput = req.body.newListItem;
+    item = req.body.newListItem;
+    usersInput.push(item);
     res.redirect("/");
 });
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000.")
 });
+
