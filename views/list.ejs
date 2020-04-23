@@ -6,23 +6,25 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<h1>Today is <%= kindOfDay %></h1>
 
-<ul>
-    <li>Buy Food</li>
-    <li>Cook Food</li>
-    <li>Eat Food</li>
+<div id="heading" class="box">
+    <h1><%= listTitle %></h1>
+</div>
 
+<div class="box">
     <% for (let i = 0; i < newItems.length ; i++) { %>
-        <li><%= newItems[i] %></li>
+    <div class="item">
+            <input type="checkbox">
+            <p><%= newItems[i] %></p>
+    </div>
     <% } %>
+        <div class="item">
+    <form action="/" method="post">
+        <input type="text" name="newListItem" placeholder="new item" autocomplete="off">
+        <button type="submit" name="button">+</button>
+    </form>
+        </div>
+</div>
 
-
-</ul>
-<form action="/" method="post">
-    <label id="newListItem">Please add a new list item</label>
-    <input id="newListItem" type="text" name="newListItem" placeholder="clean up the home">
-    <button type="submit" name="button">Add a new item</button>
-</form>
 </body>
 </html>
