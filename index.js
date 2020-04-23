@@ -1,10 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/date.js");
 const app = express();
 
-
-let usersInputs = [];
-let workItems = [];
+const usersInputs = [];
+const workItems = [];
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,16 +12,7 @@ app.use(express.static("public"));
 
 //Targeting a "home" route
 app.get("/", function (req, res) {
-    let today = new Date();
-
-    let options = {
-        weekday: "long",
-        month: "long",
-        day: "numeric"
-    };
-
-    let currentDate = today.toLocaleDateString("en-US", options);
-
+    let currentDate = date.getDay();
     res.render("list", {listTitle: currentDate, newItems: usersInputs});
 });
 
